@@ -8,8 +8,9 @@ Important, there should only be 1 print statement in your console ouput.
 It should just print the final total and not every step of the calculation.
 
 """
-one_hundred = range(101)
+one_hundred = range(2, 101, 2)
 total = 0
 for number in one_hundred:
     total += number
+    # print(number)
 print(total)
