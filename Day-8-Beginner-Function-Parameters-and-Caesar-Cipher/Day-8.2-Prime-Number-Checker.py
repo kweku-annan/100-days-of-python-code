@@ -7,12 +7,25 @@ You need to write a function that checks whether if the number passed into it is
 
 
 def prime_checker(number):
-    for i in range(2, number - 1):
-        if number % i == 0:
-            print(f"{number} is not a prime number")
+    if number > 1 and number != 2:
+        is_prime = True
+        for i in range(2, number):
+            # print(i)
+            if number % i == 0:
+                is_prime = False
+        if is_prime:
+            print("It's a prime number.")
+        else:
+            print("It's not a prime number.")
+    elif number == 2:
+        print("It's a prime number")
+        # print(number)
+    else:
+        print("It's not a prime number")
 
-        print(f"{number} is a prime number")
 
+checking = True
 
-n = int(input("Check this number: "))
-prime_checker(number=n)
+while checking:
+    n = int(input("Check this number: "))
+    prime_checker(number=n)
