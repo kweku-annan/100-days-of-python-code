@@ -1,26 +1,19 @@
 import random
 from hangman_art import stages, logo
 from hangman_words import word_list
+from word_search import get_word_definition
 import os
 
 
-def clearConsole():
+def clear_console():
     """This is a function to clear the console."""
     command = "clear"
     if os.name in ("nt", "dos"):  # If machine is running on Windows, use cls
         command = "cls"
     os.system(command)
 
+# TODO:- Let the program display the meaning of the mystery word.
 
-# TODO-1 - Update the word_list to use the 'word_list' from hangman_words.py
-# TODO-2 - Import the logo from hangman_art.py and print it at the start of the game.
-# TODO-3 - Import the stages from hangman_art.py
-# TODO-4 - If the user has entered a letter they've already guessed, print the letter and let them know. Don' away a
-#  life.
-# TODO-6 - If the letter is not in the chosen word, print out the letter and let them know it is not in the chosen word
-# Join all elements in the list and turn it  into a String.
-
-print(logo)
 
 # Variables
 word_list = word_list
@@ -28,9 +21,6 @@ chosen_word = random.choice(word_list)
 display = []
 lives = 6
 guessed_word = []
-
-# Testing code
-print(f"Psssst, the solution is {chosen_word}")
 
 # Create blanks
 for letter in chosen_word:
@@ -43,7 +33,7 @@ has_guessed = False
 while not has_guessed_all:  # This loop will run as long as there is a "_" in display.
     if "_" in display:  # Check if "_" is found in display
         guess = input("Guess a letter: ").lower()  # If yes, then ask user to guess a letter.
-        clearConsole()
+        clear_console()
         if guess in guessed_word:
             print(f"You've already guessed the letter {guess}")
             print("".join(display))
@@ -71,3 +61,6 @@ while not has_guessed_all:  # This loop will run as long as there is a "_" in di
         has_guessed_all = True
         # print(f"{''.join(display)}")
         print("You win!!!")
+
+# Get the definition of the chosen word.
+print(get_word_definition(chosen_word))
