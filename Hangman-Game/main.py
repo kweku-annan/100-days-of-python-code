@@ -12,8 +12,6 @@ def clear_console():
         command = "cls"
     os.system(command)
 
-# TODO:- Let the program display the meaning of the mystery word.
-
 
 # Variables
 word_list = word_list
