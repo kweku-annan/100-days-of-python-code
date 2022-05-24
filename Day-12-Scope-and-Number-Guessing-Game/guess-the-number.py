@@ -1,6 +1,6 @@
 import random
 
-print("Welcome to the Number Guessing Game!")
+print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 and 100")
 difficulty = input("Choose a difficulty. Type 'easy' or hard: ").lower()
 if difficulty == 'easy':
     lives = 10
@@ -8,7 +8,7 @@ else:
     lives = 5
 
 print(f"You have {lives} attempts remaining to guess the number.")
-chosen_number = random.randint(0, 100)
+chosen_number = random.randint(1, 100)
 
 while lives > 0:
     guess_number = int(input("Make a guess: "))
