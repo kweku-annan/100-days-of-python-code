@@ -43,6 +43,22 @@ def game_logic(user, computer):
             current_deal = 1
         computer.append(current_deal)
 
+    while sum_hands(user) < 21:
+        # print(user)
+        get_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
+        user_current_deal = deal_cards()
+        print(f"{user_current_deal=}")
+        if get_card == 'y':
+            if user_current_deal == 11 and sum_hands(user) + user_current_deal > 21:
+                user_current_deal = 1
+                user.append(user_current_deal)
+                print(f"{user=}")
+            else:
+                user.append(user_current_deal)
+                print(user)
+        elif get_card == 'n':
+            break
+
     if sum_hands(computer) < sum_hands(user) <= 21:
         return True
     elif sum_hands(user) < sum_hands(computer) <= 21:
@@ -58,7 +74,8 @@ while True:
     start_game = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
     game_logic(user_cards, computer_cards)
     if start_game == 'y':
-        print(user_cards)
-        print(computer_cards)
+        # print(user_cards)
+        # print(computer_cards)
+        pass
     else:
         pass
