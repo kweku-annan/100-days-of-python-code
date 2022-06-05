@@ -36,9 +36,9 @@ def game_logic(user, computer):
     """This function implements the rules for this Blackjack game. It takes two lists and compares the sum of their
     elements. It then decides returns True or False based on the rules of the game. It also checks if the computers hand
     is less than 17"""
-    while sum_hands(computer) < 17:
+    while sum_hands(computer) < 17:  # dealing cards and checking if computer conforms to the rules of the game
         current_deal = deal_cards()
-        print(current_deal)
+        # print(current_deal)
         if current_deal == 11 and sum_hands(computer) + current_deal > 21:
             current_deal = 1
         computer.append(current_deal)
@@ -47,35 +47,33 @@ def game_logic(user, computer):
         # print(user)
         get_card = input("Type 'y' to get another card, type 'n' to pass: ").lower()
         user_current_deal = deal_cards()
-        print(f"{user_current_deal=}")
+        # print(f"{user_current_deal=}")
         if get_card == 'y':
             if user_current_deal == 11 and sum_hands(user) + user_current_deal > 21:
                 user_current_deal = 1
                 user.append(user_current_deal)
-                print(f"{user=}")
+                print(f"Your cards: {user_cards}, current score: {sum_hands(user)}")
+                print(f"Computer's first card: {computer[0]}")
             else:
                 user.append(user_current_deal)
-                print(user)
+                print(f"Your cards: {user_cards}, current score: {sum_hands(user)}")
+                print(f"Computer's first card: {computer[0]}")
         elif get_card == 'n':
             break
 
-    if sum_hands(computer) < sum_hands(user) <= 21:
-        return True
-    elif sum_hands(user) < sum_hands(computer) <= 21:
-        return False
-    else:
-        return "Draw"
 
+game_on = True
 
-while True:
+while game_on:
     user_cards = [deal_cards(), deal_cards()]
     computer_cards = [deal_cards(), deal_cards()]
 
     start_game = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
-    game_logic(user_cards, computer_cards)
+    # game_logic(user_cards, computer_cards)
     if start_game == 'y':
-        # print(user_cards)
-        # print(computer_cards)
-        pass
+        print(f"Your cards: {user_cards}, current score: {sum_hands(user_cards)}")
+        print(f"Computer's first card: {computer_cards[0]}")
+        game_logic(user_cards, computer_cards)
+
     else:
-        pass
+        game_on = False
