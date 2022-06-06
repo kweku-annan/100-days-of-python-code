@@ -61,6 +61,31 @@ def game_logic(user, computer):
         elif get_card == 'n':
             break
 
+    # Score rules
+    if sum_hands(computer) < sum_hands(user) <= 21:  #
+        print(f"Your final hand: {user}, final score: {sum_hands(user)}")
+        print(f"Dealer's final hand: {computer}, final score: {sum_hands(computer)}")
+        print("You win!")
+    elif sum_hands(computer) > 21 and sum_hands(user) <= 21:
+        print(f"Your final hand: {user}, final score: {sum_hands(user)}")
+        print(f"Dealer's final hand: {computer}, final score: {sum_hands(computer)}")
+        print(f"You win!\nDealer went over.")
+    elif sum_hands(user) > 21 and sum_hands(computer) <= 21:
+        print(f"Your final hand: {user}, final score: {sum_hands(user)}")
+        print(f"Dealer's final hand: {computer}, final score: {sum_hands(computer)}")
+        print("You went over!\nYou lose.")
+    elif sum_hands(user) < sum_hands(computer) <= 21:
+        print(f"Your final hand: {user}, final score: {sum_hands(user)}")
+        print(f"Dealer's final hands: {computer}, final score: {sum_hands(computer)}")
+        print("You lose!")
+    elif sum_hands(user) == sum_hands(computer):
+        print(f"Your final hands: {user}, final score: {sum_hands(user)}")
+        print(f"Dealer's final hands: {computer}, final score: {sum_hands(computer)}")
+        print("Draw")
+    else:
+        print(f"Your final hand: {user}, final score: {sum_hands(user)}")
+        print(f"Dealer's final hands: {computer}, final score: {sum_hands(computer)}")
+
 
 game_on = True
 
@@ -71,9 +96,10 @@ while game_on:
     start_game = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
     # game_logic(user_cards, computer_cards)
     if start_game == 'y':
+        print(logo)
         print(f"Your cards: {user_cards}, current score: {sum_hands(user_cards)}")
         print(f"Computer's first card: {computer_cards[0]}")
         game_logic(user_cards, computer_cards)
-
+        os.system("clear")
     else:
         game_on = False
